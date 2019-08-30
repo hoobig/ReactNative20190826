@@ -1,12 +1,15 @@
 /* Redux */
 import { connect } from 'react-redux';
-/* Component */
-import IndexComponent from '../../components/index/IndexComponent';
 
 import { increaseAction, decreaseAction } from '../actions';
 
+/* App Container */
+import AppContainer from './AppContainer';
+
 const mapStateToProps = (state) => ({
-    times: state.IndexReducer ? state.IndexReducer : 0
+    times: state.IndexReducer ? state.IndexReducer : 0,
+    appTitle: state.AppReducer ? state.AppReducer : '',
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -15,8 +18,11 @@ const mapDispatchToProps = (dispatch) => ({
     },
     onDecrement: (step) => {
         dispatch(decreaseAction(step));
+    },
+    changeTitleAction: (title) => {
+        dispatch(decreaseAction(title));
     }
 });
 
-const IndexContainer = connect(mapStateToProps, mapDispatchToProps)(IndexComponent);
+const IndexContainer = connect(mapStateToProps, mapDispatchToProps)(AppContainer);
 export default IndexContainer;

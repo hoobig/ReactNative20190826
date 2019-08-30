@@ -6,12 +6,71 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    FlatList
 } from 'react-native';
+
+import { Container, Footer, Body, Title } from 'native-base';
+import { Header } from 'react-native-elements';
 
 class IndexComponent extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            data: [
+            {key: 'a'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'},
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'b'}, 
+            {key: 'c'}, 
+            ]
+        }
     }
 
     _onCountIncreasing() {
@@ -24,30 +83,26 @@ class IndexComponent extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-            
-            <View style={styles.child}>
-            <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.buttonCount} onPress={() => {this._onCountIncreasing()} }>
-            <Text style={styles.textButton}>InCreasing</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.buttonCount} onPress={() => {this._onCountDecreasing()} }>
-            <Text style={styles.textButton}>DeCreasing</Text>
-            </TouchableOpacity>
-            </View>
-            <Text>Count Number: { this.props.times }</Text>
-            </View>
-
-            <View style={styles.child}>
-            <Text style={styles.text}>Hello dff</Text>
-            </View>
-
-            <View style={styles.child}>
-            <Text style={styles.text}>Hello dff</Text>
-            </View>
-
-            </View>
+            <Container style={styles.container}>
+                <Header 
+                  placement="left"
+                  leftComponent={{ icon: 'menu', color: '#fff' }}
+                  centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+                  rightComponent={{ icon: 'home', color: '#fff' }}
+                  containerStyle={styles.header}
+                />
+                <View style={styles.content}>
+                    <FlatList
+                      data={this.state.data}
+                      renderItem={({item}) => <Text>{item.key}</Text>}
+                    />
+                </View>
+                <Footer style={styles.footer}>
+                    <Body>
+                        <Title style={styles.text}>Sticky Headers</Title>
+                    </Body>
+                </Footer>
+            </Container>
             );
     }
 }
@@ -55,35 +110,24 @@ class IndexComponent extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingTop: 0,
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
     },
-    child: {
-        flex: 1,
-        backgroundColor: 'white',
-        borderBottomColor: 'black', 
-        borderBottomWidth: 3, 
+    header: {
+        flex: 1/1,
+        paddingTop: 0,
+        backgroundColor: '#3D6DCC',
     },
-    buttonContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-around'
+    content: {
+        flex: 6/1
     },
-    buttonCount: {
-        width: 100,
-        height: 50,
-        borderRadius: 5,
-        color: '#ffffff',
-        backgroundColor: '#6c757d',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 10,
-    },
-    textButton: {
-        color: '#ffffff'
+    footer: {
+        flex: 1/1,
+        backgroundColor: '#10bb25',
     },
     text: {
-        color: 'red'
+        color: '#ffffff'
     }
 });
 
