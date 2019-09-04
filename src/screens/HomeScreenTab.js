@@ -1,38 +1,26 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
+import { DrawerActions } from 'react-navigation';
 
-const styles = {
-    btnMenu: {
-        marginLeft: 5,
-    },
-    btnHome: {
-        marginRight: 5,
-    }
-};
-
-class HomeScreen extends Component {
+class HomeScreenTab extends Component {
 
     constructor(props) {
       super(props);
     }
 
-    static navigationOptions = ({ navigation }) => ({
-        header: null,
-
-    })
 
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Home Screen</Text>
+            <Text>Home Screen Tab</Text>
             <Button
-            title="Go to Settings"
-            onPress={() => this.props.navigation.navigate('Settings')}
+            title="Go to Home Drw"
+            onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}
             />
             </View>
             );
         }
     }
 
-    export default HomeScreen;
+    export default HomeScreenTab;

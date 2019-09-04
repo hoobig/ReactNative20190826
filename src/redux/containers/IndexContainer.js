@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(decreaseAction(step));
     },
     changeTitleAction: (title) => {
-        dispatch(decreaseAction(title));
+        dispatch(changeScreenTitle(title));
     }
 });
 
