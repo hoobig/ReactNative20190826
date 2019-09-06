@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-class SettingsScreenDrw extends Component {
+class BookingUpdateScreen extends Component {
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -11,4 +11,4 @@ class SettingsScreenDrw extends Component {
         }
     }
 
-    export default SettingsScreenDrw;
+    export default BookingUpdateScreen;

@@ -6,16 +6,17 @@ import {
     createDrawerNavigator, 
     createBottomTabNavigator, 
     createAppContainer,
-    DrawerActions
+    DrawerActions,
+    NavigationActions
 } from "react-navigation";
 
 /* Component */
-import HomeScreenDrw from '../../screens/HomeScreenDrw';
-import HomeScreenTab from '../../screens/HomeScreenTab';
-import HomeScreen from '../../screens/HomeScreen';
-import SettingsScreen from '../../screens/SettingsScreen';
-import SettingsScreenDrw from '../../screens/SettingsScreenDrw';
-import SettingsScreenTab from '../../screens/SettingsScreenTab';
+import BookingInfoScreen from '../../screens/BookingInfoScreen';
+import BookingUpdateScreen from '../../screens/BookingUpdateScreen';
+import LogoutScreen from '../../screens/LogoutScreen';
+import HiddenScreen from '../../screens/HiddenScreen';
+
+import { DrawerButton } from '../../components/DrawerButton';
 
 const styles = {
     btnMenu: {
@@ -26,43 +27,38 @@ const styles = {
     }
 };
 
+const StackNavigator = createStackNavigator({
+    BookingInfo: {
+        screen: BookingInfoScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
+    BookingUpdate: {
+        screen: BookingUpdateScreen,
+        navigationOptions: {
+            title: 'Booking Update'
+        },
+    },
+},
+{
+    initialRouteName: "BookingInfo"
+});
+
 const DrawerNavigator = createDrawerNavigator({
-    HomenDrw: HomeScreenDrw,
-    SettingsDrw: SettingsScreenDrw,
+    MainStacks: {
+        screen: StackNavigator,
+        navigationOptions: {
+            drawerLabel: <HiddenScreen />,
+        },
+    },
 },
 {
-    initialRouteName: "HomenDrw"
-});
-
-const TabNavigator = createBottomTabNavigator({
-    HomeTab: HomeScreenTab,
-    SettingsTab: SettingsScreenTab,
-},
-{
-    initialRouteName: "HomeTab"
-});
-
-const MainNavigator = createStackNavigator({
-    Home: HomeScreen,
-    Settings: SettingsScreen
-},
-{
-    initialRouteName: "Home"
+    initialRouteName: "MainStacks",
+    contentComponent: DrawerButton,
 });
 
 const AppNavigator = createStackNavigator({
-    Main: {
-        screen: MainNavigator,
-        navigationOptions: () => {
-            header: null
-        }
-    },
-    MainTabs: {
-        screen: TabNavigator,
-        navigationOptions: () => {
-            header: null
-        }
-    },
     MainDrawer: {
         screen: DrawerNavigator,
         navigationOptions: ({ navigation }) => {
